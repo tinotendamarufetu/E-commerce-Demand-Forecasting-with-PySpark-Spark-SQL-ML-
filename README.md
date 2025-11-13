@@ -40,6 +40,8 @@ Build a **daily product-level demand forecast** using PySpark machine learning a
 
 Using the **Online Retail Dataset**, which contains real e-commerce transactions for a UK retailer.
 
+Sources: https://archive.ics.uci.edu/dataset/352/online+retail
+
 | Column | Description |
 |--------|-------------|
 | InvoiceNo | Unique transaction ID |
