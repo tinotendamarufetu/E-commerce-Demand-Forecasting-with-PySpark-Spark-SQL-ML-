@@ -1,0 +1,16 @@
+app_name: "DemandForecast"
+master: "local[*]"
+
+hadoop_home: "C:\\hadoop"
+
+ui:
+  bind_address: "127.0.0.1"
+  port: 4051
+
+memory:
+  driver_memory: "4g"
+  driver_max_result_size: "2g"
+  executor_memory_overhead: "512m"
+
+codegen:
+  whole_stage: false

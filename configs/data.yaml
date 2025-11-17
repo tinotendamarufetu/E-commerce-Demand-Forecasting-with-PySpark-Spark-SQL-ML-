@@ -1,0 +1,6 @@
+raw:
+  online_retail: "data/raw/online_retail.csv"
+
+scoring:
+  input_path: "data/raw/new_online_retail.csv"         # <- change this to your future/new data file
+  output_path: "data/predictions/rf_v1_predictions.parquet"

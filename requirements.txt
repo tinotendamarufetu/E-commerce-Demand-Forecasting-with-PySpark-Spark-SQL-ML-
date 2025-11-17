@@ -1,0 +1,25 @@
+
+# Core compute
+pyspark==3.5.3  # Updated for Python 3.12 compatibility
+
+# setuptools provides distutils compatibility for older PySpark versions
+setuptools>=65.0.0
+
+# Data manipulation
+pandas==2.2.2
+pyarrow==16.1.0  # Needed for Spark <-> Pandas & Parquet
+
+# Configs
+pyyaml==6.0.1
+
+# Plotting
+matplotlib==3.8.4
+seaborn==0.13.2
+
+# Utility
+joblib==1.4.2
+
+# Optional but recommended for development
+tqdm==4.66.4     # progress bars
+pytest==8.3.2    # testing
+black==24.3.0    # code formatting

@@ -1,0 +1,63 @@
+# ----------------------------------------
+# MODEL CONFIGURATION FOR DEMAND FORECASTING
+# ----------------------------------------
+
+target_column: "TotalQuantity"
+label_column: "label"
+date_column: "Date"
+
+pipeline:
+  # Categorical features
+  categorical_index:
+    - "StockCode"     # index only
+  categorical_ohe:
+    - "Country"       # index + one-hot encode
+
+  # Numerical (safe, non-leaking) features – EXACTLY as in notebook
+  numerical:
+    # Calendar Features
+    - "DayOfWeek"
+    - "DayOfMonth"
+    - "WeekOfYear"
+    - "Month"
+    - "Quarter"
+    - "Year"
+    - "IsWeekend"
+    - "IsMonthStart"
+    - "IsMonthEnd"
+
+    # Lag Features
+    - "TotalQuantity_lag_1"
+    - "TotalQuantity_lag_7"
+    - "TotalQuantity_lag_30"
+    - "AvgPrice_lag_1"
+    - "NumTransactions_lag_1"
+    - "AvgQtyPerTransaction_lag_1"
+    - "Price_change_pct_lag_1"
+
+    # Rolling Features
+    - "Qty_moving_avg_7"
+    - "Qty_moving_avg_30"
+    - "Qty_volatility_7"
+
+model:
+  type: "random_forest_regressor"
+  params:
+    numTrees: 30
+    maxDepth: 6
+    maxBins: 64
+    seed: 42
+
+training:
+  feature_col: "features"
+  prediction_col: "prediction"
+
+  # Time-based split (exactly from your notebook)
+  split_date: "2011-09-25"
+
+  # Model saving
+  save_dir: "models"
+  experiment_name: "rf_v1"
+
+  # Primary metric
+  metric: "rmse"
